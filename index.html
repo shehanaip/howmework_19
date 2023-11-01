@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<head>
+</head>
+<body>
+    <nav>
+        <img  src="Sony_logo_PNG2.png" alt="nothing">
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Products</a>
+            <a href="#">Contact</a>
+            <a href="#">Login</a>
+        </div>
+        
+        <div id="main">
+            <button class="openbtn" id="menuButton" onclick="openNav()">☰</button>  
+        </div>
+        <div class="mode">
+        <button class="toggle-button day-button" onclick="toggleTheme()" id="dayButton"><i class="fa-solid fa-sun" style="color: #216ef2;"></i></button>
+        <button class="toggle-button night-button" onclick="toggleTheme()" id="nightButton"><i class="fa-solid fa-moon" style="color: #212121;"></i></button></nav>
+
+    </div><br><br><br><br>
+    <center><div class="slider_img">
+    <img id="slider" src="">
+</div></center>
+<div id="cookiePopup">
+    <p>This website uses cookies. Do you accept?</p>
+    <button onclick="acceptCookies()">Accept</button>
+    <button onclick="declineCookies()">Decline</button>
+</div>
+    <script>
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementsByTagName("nav")[0].style.marginLeft = "250px"; /* Add this line */
+    document.getElementById("menuButton").style.display = "none"; 
+}
+
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.getElementsByTagName("nav")[0].style.marginLeft = "0"; /* Add this line */
+    document.getElementById("menuButton").style.display = "block"; 
+}
+
+        // for dark mode
+        function toggleTheme() {
+        var body = document.body;
+        var dayButton = document.getElementById("dayButton");
+        var nightButton = document.getElementById("nightButton");
+        body.classList.toggle("dark-mode");
+        
+        if (body.classList.contains("dark-mode")) {
+            dayButton.style.display = "none";
+            nightButton.style.display = "block";
+        } else {
+            dayButton.style.display = "block";
+            nightButton.style.display = "none";
+        }
+    }
+    // for slider
+    var images = ["image1.jpg", "image2.jpg", "image3.jpg"];
+    var index = 0;
+
+    function changeImage() {
+        var slider = document.getElementById("slider");
+        slider.src = images[index];
+        index = (index + 1) % images.length;
+    }
+
+    setInterval(changeImage, 5000);
+   
+    function showCookiePopup() {
+        document.getElementById("cookiePopup").style.display = "block";
+    }
+
+    function acceptCookies() {
+        document.getElementById("cookiePopup").style.display = "none";
+    }
+
+    function declineCookies() {
+        document.getElementById("cookiePopup").style.display = "none";
+    }
+    window.onload = function() {
+        setTimeout(showCookiePopup, 3000);
+    };
+    </script>
+
+</body>
+</html> 
